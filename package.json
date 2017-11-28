@@ -1,0 +1,32 @@
+{
+  "name": "divi-discord-bot",
+  "version": "1.0.0",
+  "description": "divi bot for discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/99darwin/divi-discord-bot.git"
+  },
+  "keywords": [
+    "bot",
+    "discord",
+    "node"
+  ],
+  "author": "99darwin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/99darwin/divi-discord-bot/issues"
+  },
+  "homepage": "https://github.com/99darwin/divi-discord-bot#readme",
+  "dependencies": {
+    "bufferutil": "^3.0.3",
+    "discord.js": "^11.2.1",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "uws": "^9.14.0"
+  }
+}
