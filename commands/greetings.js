@@ -4,8 +4,11 @@ const Discord = require('discord.js');
 // Create an instance of a Discord client
 const client = new Discord.Client();
 const request = require('request-promise');
+const weiMultiplier = 1000000000000000000;
 // The token of your bot - https://discordapp.com/developers/applications/me
 const token = require('../keys.js').token;
+const contractaddress = require('../keys.js').contractAddress;
+const etherscanApi = require('../keys.js').etherscanApi;
 
 // The ready event is vital, it means that your bot will only start reacting to information
 // from Discord _after_ ready is emitted
@@ -20,13 +23,16 @@ client.on('message', message => {
       // Send "pong" to the same channel
       message.channel.send('pong');
     }
+    // List help commands
     if (message.content === '/help') {
         message.channel.send(`List of commands:
         \`/price\` - Get's current DIVI price
         \`/totalSupply\` - Get's DIVI total supply
         \`/mktcap\` - Get's current DIVI market cap
+        \`/exchanges\` - Get's list of current exchanges selling DIVX
         \`/friends\` - Tell's you how many friends you have`)
     }
+    // Find current price from CMC 
     if (message.content === '/price') {
         const priceCheck = {
             uri: 'https://api.coinmarketcap.com/v1/ticker/divi/',
@@ -47,6 +53,49 @@ client.on('message', message => {
                 console.log(`nahhhhh nigga`);
             });
     }
+    // Find total supply of tokens from etherscan
+    if (message.content === '/totalSupply') {
+        const totalSupply = {
+            uri: 'https://api.etherscan.io/api',
+            qs: {
+                module: 'stats',
+                action: 'tokensupply',
+                contractaddress: contractaddress,
+                apikey: etherscanApi
+            },
+            json: true
+        };
+        request(totalSupply)
+            .then(function(res) {
+                console.log(res);
+                message.channel.send(`The total supply of DIVX is and always will be: ${res.result / weiMultiplier} DIVX`)
+            })
+            .catch(function(err) {
+                console.log(`ohhh noo!`)
+            })
+        message.channel.send()
+    }
+    // List exchanges where DIVX is available
+    if (message.content === '/exchanges') {
+        message.channel.send(`We are currently on: \n
+        Cryptopia: https://goo.gl/A8Gd9M\n
+        EtherDelta: https://goo.gl/mH8X9b`)
+    }
+    // How many friends?
+    if (message.content === '/friends') {
+        let numFriends = Math.floor(Math.random() * 10);
+        if (numFriends > 0) {
+            message.channel.send(`You have ${numFriends} friends`);
+        } else {
+            message.channel.send(`Loser has no friends`);
+        }
+        
+    }
+    // If someone asks when moon tell them to fuck off
+    if (message.content === 'when moon') {
+        message.channel.send('fuck off');
+    }
+
   });
 
 // Create an event listener for new guild members
