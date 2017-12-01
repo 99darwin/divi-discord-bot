@@ -65,9 +65,7 @@ client.on('message', message => {
         });
     }
     if (message.content === '/price') {
-        const interval = setInterval(function(){
-            priceCheck();
-        }, 60000);
+        setInterval(priceCheck, 60000);
     }
     // Find total supply of tokens from etherscan
     if (message.content === '/totalSupply') {
