@@ -7,9 +7,9 @@ const client = new Discord.Client();
 const request = require('request-promise');
 const weiMultiplier = 1000000000000000000;
 // The token of your bot - https://discordapp.com/developers/applications/me
-const token = require('../keys.js').token;
-const contractaddress = require('../keys.js').contractAddress;
-const etherscanApi = require('../keys.js').etherscanApi;
+const token = require('../dev-keys.js').token;
+const contractaddress = require('../dev-keys.js').contractAddress;
+const etherscanApi = require('../dev-keys.js').etherscanApi;
 
 // The ready event is vital, it means that your bot will only start reacting to information
 // from Discord _after_ ready is emitted
