@@ -55,7 +55,8 @@ client.on('message', message => {
                     vol = value;
                 }
             });
-            message.channel.send(`The current DIVX price in USD is $${_.round(res[0].price_usd, 3)}
+            message.channel.send(`-------------------------------------------
+            \nThe current DIVX price in USD is $${_.round(res[0].price_usd, 3)}
             \nThe current DIVI price in BTC is ${res[0].price_btc}
             \nThe current Market Cap is $${res[0].market_cap_usd}
             \nThe 24 hour volume of DIVX is $${vol}`)
@@ -65,7 +66,7 @@ client.on('message', message => {
         });
     }
     if (message.content === '/price') {
-        setInterval(priceCheck, 60000);
+        setInterval(priceCheck, 6000);
     }
     // Find total supply of tokens from etherscan
     if (message.content === '/totalSupply') {
