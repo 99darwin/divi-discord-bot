@@ -30,9 +30,10 @@ client.on('message', message => {
         message.channel.send(`List of commands:
         \`/price\` - Get's current DIVI price
         \`/totalSupply\` - Get's DIVI total supply
-        \`/mktcap\` - Get's current DIVI market cap
         \`/exchanges\` - Get's list of current exchanges selling DIVX
-        \`/friends\` - Tell's you how many friends you have`)
+        \`/friends\` - Tell's you how many friends you have
+        \`/masternodes\` - Learn about our masternodes
+        \`/airdrops\``);
     }
     // Find current price from CMC 
     priceCheck = () => { 
@@ -109,6 +110,18 @@ client.on('message', message => {
     // If someone asks when moon tell them to fuck off
     if (message.content === 'when moon') {
         message.channel.send('when mars');
+    }
+    if (message.content === '/masternodes') {
+        message.channel.send(`Divi has developed the world's first one-click, five-tiered masternode solution. The tiers are as follows:\n
+        Cooper: 1000 DIVI\n
+        Silver: 3000 DIVI - 5% bonus\n
+        Gold: 10,000 DIVI - 10% bonus\n
+        Platinum: 30,000 DIVI - 15% bonus\n
+        Diamond: 100,000 DIVI - 20% bonus\n
+        To learn more about our masternodes click here: https://medium.com/diviproject/divi-masternodes-explained-f1fe24d8dab5`);
+    }
+    if (message.content === '/airdrops') {
+        message.channel.send(`All information regarding DIVX airdrops can be found here: https://medium.com/diviproject/divx-airdrop-details-bd12d3da539c`);
     }
 
   });
